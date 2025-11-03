@@ -1,0 +1,26 @@
+ckpt_dir: ./ckpts
+output_dir: ./outputs
+num_steps: 50
+solver_name: unipc
+shift: 5.0
+sp_size: 1
+audio_guidance_scale: 3.0
+video_guidance_scale: 7.0
+mode: "t2v" # ["t2v", "i2v", "t2i2v"] all comes with audio
+fp8: True
+cpu_offload: True
+seed: 103
+video_negative_prompt: "jitter, bad hands, blur, distortion"  # Artifacts to avoid in video
+audio_negative_prompt: "robotic, muffled, echo, distorted"    # Artifacts to avoid in audio
+video_frame_height_width: [512,992] # only useful if mode = t2v or t2i2v, recommended values: [512, 992], [992, 512], [960, 512], [512, 960], [720, 720], [448, 1120]
+text_prompt: "A man running at the park"
+slg_layer: 11
+each_example_n_times: 1
+
+# Flash Attention 설정
+use_flash_attention: false  # false로 설정하면 표준 attention 사용
+
+# Attention Visualization 설정
+visualize_attention: true  # true로 설정하면 attention map 시각화
+visualize_token_idx: 1  # 특정 토큰 인덱스 (null이면 전체 평균)
+visualize_frame_idx: 0     # 시각화할 프레임 인덱스 (0이 첫 번째 프레임)
